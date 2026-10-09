@@ -137,7 +137,26 @@ func registerFonts() {
 	}
 }
 
-var termFont = terminal.Font{Family: "JetBrains Mono, SF Mono, Menlo, monospace", Size: 11.6, LineHeight: 1.0}
+// nerdFamilies are the families of the Nerd Fonts a machine may have, for
+// the icons programs such as eza, lsd and starship print: characters in
+// the private use area, which the system's own fallback leaves as boxes.
+// The single-width families come first, so that icons take one cell, and
+// the ones a machine does not have are skipped.
+const nerdFamilies = "JetBrainsMono Nerd Font Mono, JetBrainsMono Nerd Font, " +
+	"JetBrainsMonoNL Nerd Font Mono, JetBrainsMonoNL Nerd Font, " +
+	"Symbols Nerd Font Mono, Symbols Nerd Font, " +
+	"Hack Nerd Font Mono, Hack Nerd Font, " +
+	"FiraCode Nerd Font Mono, FiraCode Nerd Font, " +
+	"MesloLGS NF, MesloLGM Nerd Font Mono, MesloLGM Nerd Font, " +
+	"CaskaydiaCove Nerd Font Mono, CaskaydiaCove Nerd Font, " +
+	"SauceCodePro Nerd Font Mono, SourceCodePro Nerd Font Mono, " +
+	"RobotoMono Nerd Font Mono, UbuntuMono Nerd Font Mono, " +
+	"Iosevka Nerd Font Mono, IosevkaTerm Nerd Font Mono, " +
+	"DejaVuSansMono Nerd Font Mono, VictorMono Nerd Font Mono, " +
+	"Mononoki Nerd Font Mono, SpaceMono Nerd Font Mono, " +
+	"Inconsolata Nerd Font Mono, EnvyCodeR Nerd Font Mono"
+
+var termFont = terminal.Font{Family: "JetBrains Mono, " + nerdFamilies + ", SF Mono, Menlo, monospace", Size: 11.6, LineHeight: 1.0}
 
 // The terminals' colors: soft ink on the panes' paper, and the dark kind.
 var lightTerm = &terminal.Theme{
