@@ -241,6 +241,11 @@ func (a *App) paneCard(c *ui.Context, k *colors, t *Tab, p *Pane) ui.Element {
 				return
 			}
 			tv := terminal.View(c, p.term).Fill()
+			// The pane claims the paste, so that an image on the clipboard
+			// pastes as a path, which the terminal's own paste leaves out.
+			if mods, key := pasteShortcut(); tv.Shortcut(mods, key) {
+				a.pasteInto(p, pasteText())
+			}
 			if a.focusReq == p && a.tab() == t {
 				tv.Focus()
 				a.focusReq = nil

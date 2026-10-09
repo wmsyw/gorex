@@ -169,7 +169,12 @@ func (a *App) menu() *mygo.Menu {
 			mygo.Separator(),
 			{Role: mygo.RoleCut},
 			{Role: mygo.RoleCopy},
-			{Role: mygo.RolePaste},
+			// Paste is GoRex's own: it takes an image on the clipboard as the
+			// path of the file it writes, which RolePaste's text cannot. It
+			// carries no accelerator, so that Command-V reaches the pane,
+			// which claims it, and the fields of the interface, which paste
+			// text where their caret is.
+			{Label: "Paste", Click: func(*mygo.MenuItem, *mygo.Window) { a.pasteFocused() }},
 			{Role: mygo.RoleSelectAll},
 			mygo.Separator(),
 			item(&cmdClear),
