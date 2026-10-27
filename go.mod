@@ -4,7 +4,7 @@ go 1.27.3
 
 require (
 	github.com/ebitengine/purego v0.11.2
-	github.com/egoist/mygo v0.6.4
+	github.com/egoist/mygo v0.7.1
 	golang.org/x/image v0.47.0
 	golang.org/x/sys v0.49.0
 )
